@@ -8,7 +8,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
-    .hero-bg { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://picsum.photos/id/1015/2000/1200'); background-size: cover; background-position: center; }
+    .hero-bg { 
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                  url('https://picsum.photos/id/1015/2000/1200'); 
+      background-size: cover; 
+      background-position: center; 
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 50;
+    }
   </style>
 </head>
 <body class="bg-zinc-950 text-white">
@@ -34,7 +45,7 @@
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <button onclick="notifyMe()" 
                 class="bg-emerald-500 hover:bg-emerald-600 text-black font-semibold text-lg px-10 py-5 rounded-2xl transition">
-          Notify Me When We Launch 🚀
+          Join the Waitlist 🚀
         </button>
         <a href="#for-riders" 
            class="border border-white/50 hover:border-white font-semibold text-lg px-10 py-5 rounded-2xl transition">
@@ -60,73 +71,61 @@
   <section class="py-20 px-6 bg-zinc-900">
     <div class="max-w-5xl mx-auto">
       <h2 class="text-4xl font-bold text-center mb-12">See How QRider Go Change Delivery for Benin</h2>
-      
       <div class="grid md:grid-cols-3 gap-8">
         <div class="bg-zinc-800 p-8 rounded-3xl">
           <div class="text-4xl mb-4">📦</div>
           <h3 class="text-2xl font-semibold mb-3">For Customers</h3>
-          <p class="text-zinc-400">Tap phone, order easy-peasy. Track your rider live as e dey hustle through Benin traffic. That sweet smile when your package land — guaranteed!</p>
+          <p class="text-zinc-400">Tap phone, order easy-peasy. Track your rider live as e dey hustle through Benin traffic.</p>
         </div>
         <div class="bg-zinc-800 p-8 rounded-3xl">
           <div class="text-4xl mb-4">🛵</div>
           <h3 class="text-2xl font-semibold mb-3">For Riders</h3>
-          <p class="text-zinc-400">Flexible hours. Steady income. Make money while you move. Join the team of local heroes delivering happiness across Benin City.</p>
+          <p class="text-zinc-400">Flexible hours. Steady income. Make money while you move.</p>
         </div>
         <div class="bg-zinc-800 p-8 rounded-3xl">
           <div class="text-4xl mb-4">🏪</div>
           <h3 class="text-2xl font-semibold mb-3">For Store Owners</h3>
-          <p class="text-zinc-400">List your products today. Riders go deliver for you and boost your sales. No stress, more customers.</p>
+          <p class="text-zinc-400">List your products. Riders go deliver and boost your sales.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Coming Features Teaser -->
-  <section class="py-20 px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-6">What Dey Coming</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
-        <div class="bg-zinc-900 p-6 rounded-2xl">✅ Real-time GPS tracking</div>
-        <div class="bg-zinc-900 p-6 rounded-2xl">✅ Verified & insured riders</div>
-        <div class="bg-zinc-900 p-6 rounded-2xl">✅ 24/7 customer support</div>
-        <div class="bg-zinc-900 p-6 rounded-2xl">✅ Safe & contactless delivery</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Waitlist + Social Proof -->
+  <!-- Waitlist Form -->
   <section id="notify" class="py-20 bg-emerald-600 text-black">
     <div class="max-w-2xl mx-auto text-center px-6">
       <h2 class="text-4xl font-bold mb-6">Be Among the First to Use QRider</h2>
-      <p class="text-xl mb-8">Drop your number or email. We go notify you the moment the app dey live — plus early rider bonuses for the first 200 riders!</p>
+      <p class="text-xl mb-8">Drop your details. We go notify you sharp sharp when the app launches.</p>
       
-      <form class="max-w-md mx-auto" onsubmit="submitForm(event)">
-        <div class="flex flex-col sm:flex-row gap-3">
-          <input type="text" id="contact" placeholder="080xxxxxxxx or email" 
-                 class="flex-1 px-6 py-4 rounded-2xl text-lg focus:outline-none">
-          <button type="submit"
-                  class="bg-black text-white font-semibold px-10 py-4 rounded-2xl hover:bg-zinc-800 transition">
-            Join Waitlist
-          </button>
-        </div>
+      <form id="waitlistForm" class="max-w-md mx-auto space-y-4">
+        <input type="text" id="name" placeholder="Your Full Name" required
+               class="w-full px-6 py-4 rounded-2xl text-lg focus:outline-none">
+        
+        <input type="tel" id="phone" placeholder="Phone Number (e.g. 07075673018)" required
+               class="w-full px-6 py-4 rounded-2xl text-lg focus:outline-none">
+        
+        <input type="email" id="email" placeholder="Email (optional)"
+               class="w-full px-6 py-4 rounded-2xl text-lg focus:outline-none">
+        
+        <select id="role" required
+                class="w-full px-6 py-4 rounded-2xl text-lg focus:outline-none bg-white">
+          <option value="">I want to join as...</option>
+          <option value="Customer">Customer (I want to order)</option>
+          <option value="Rider">Rider (I want to deliver & earn)</option>
+          <option value="Store">Store Owner (I want to list my products)</option>
+        </select>
+        
+        <button type="submit"
+                class="w-full bg-black text-white font-semibold px-10 py-5 rounded-2xl hover:bg-zinc-800 transition text-lg">
+          Join Waitlist Now
+        </button>
       </form>
       
-      <p class="text-sm mt-6 opacity-75">Over 1,000+ people already dey wait. You no go miss this one!</p>
+      <p class="text-sm mt-6 opacity-75">Your info go go straight to our WhatsApp for quick follow-up.</p>
     </div>
   </section>
 
-  <!-- Testimonials Teaser -->
-  <section class="py-20 px-6 bg-zinc-950">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12">"QRider go save plenty time for Benin!"</h2>
-      <div class="italic text-center text-zinc-300">
-        “I dey always late with normal dispatch. With QRider, my pharmacy items go reach fast fast.” — Mama Efe (Store Owner)<br><br>
-        “This one na the future. I fit hustle and still get time for family.” — Chinedu (Future Rider)
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
+  <!-- Footer with Social Icons -->
   <footer class="bg-black py-12 border-t border-white/10">
     <div class="max-w-5xl mx-auto px-6 text-center">
       <div class="flex items-center justify-center gap-3 mb-6">
@@ -134,24 +133,55 @@
         <span class="text-2xl font-bold">QRider</span>
       </div>
       <p class="text-zinc-500">Fast. Reliable. Made for Benin City.</p>
-      <p class="text-sm text-zinc-600 mt-8">© 2026 QRider • All rights reserved • Benin City, Edo State</p>
-      <p class="text-xs text-zinc-700 mt-2">Follow us on Instagram & WhatsApp for updates</p>
+      
+      <!-- Social Icons -->
+      <div class="flex justify-center gap-6 mt-8 text-3xl">
+        <a href="https://instagram.com/qriderbenin" target="_blank" class="hover:text-emerald-400 transition">📷</a>
+        <a href="https://twitter.com/qriderbenin" target="_blank" class="hover:text-emerald-400 transition">𝕏</a>
+        <a href="https://facebook.com/qriderbenin" target="_blank" class="hover:text-emerald-400 transition">📘</a>
+        <a href="https://wa.me/2347075673018" target="_blank" class="hover:text-emerald-400 transition">💬</a>
+      </div>
+      
+      <p class="text-sm text-zinc-600 mt-10">© 2026 QRider • Benin City, Edo State</p>
     </div>
   </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/2347075673018?text=Hello%20QRider!%20I%20want%20to%20join%20the%20waitlist."
+     target="_blank"
+     class="whatsapp-float bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl text-3xl transition">
+    💬
+  </a>
 
   <script>
     function notifyMe() {
       document.getElementById('notify').scrollIntoView({ behavior: 'smooth' });
     }
-    
-    function submitForm(e) {
+
+    document.getElementById('waitlistForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const contact = document.getElementById('contact').value;
-      if (contact) {
-        alert("Thank you! You don join the waitlist 🔥\nWe go contact you sharp sharp when QRider launch.");
-        // In real use: send to your backend or email list (Mailchimp, etc.)
-      }
-    }
+      
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value || 'No email';
+      const role = document.getElementById('role').value;
+      
+      const message = `Hello QRider!%0A%0A` +
+                      `Name: ${encodeURIComponent(name)}%0A` +
+                      `Phone: ${encodeURIComponent(phone)}%0A` +
+                      `Email: ${encodeURIComponent(email)}%0A` +
+                      `Role: ${encodeURIComponent(role)}%0A%0A` +
+                      `I dey interested to join the waitlist. Notify me when the app launches!`;
+      
+      const whatsappUrl = `https://wa.me/2347075673018?text=${message}`;
+      
+      window.open(whatsappUrl, '_blank');
+      
+      alert("Thank you! Message don open for WhatsApp. We go reply you sharp sharp 🔥");
+      
+      // Optional: reset form
+      this.reset();
+    });
   </script>
 </body>
-</html>
+  </html>
